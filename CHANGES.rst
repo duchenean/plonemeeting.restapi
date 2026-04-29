@@ -7,7 +7,13 @@ Version 1.x is for PloneMeeting 4.1.x, version 2.x is for PloneMeeting 4.2.x+
 2.14 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Convert MeetingConfig AT field accessor / mutator calls to DX
+  direct attribute access (B.1.5 of the iA.Delib P6 migration). 11
+  conversions across `services/add.py` and 3 test modules. The
+  `setUsingGroups` setter (side-effect setter) is followed by a
+  manual `notify(ObjectModifiedEvent(cfg))` so the DX
+  `events.onConfigEdited` handler still fires.
+  [duchenean]
 
 
 2.13 (2026-03-13)

@@ -276,7 +276,7 @@ class ItemPost(BasePost):
 
     @property
     def _active_fields(self):
-        return self.cfg.getUsedItemAttributes()
+        return self.cfg.used_item_attributes
 
     def _wf_transition_additional_warning(self, tr):
         warning_message = ""
@@ -303,7 +303,7 @@ class MeetingPost(BasePost):
 
     @property
     def _active_fields(self):
-        return self.cfg.getUsedMeetingAttributes()
+        return self.cfg.used_meeting_attributes
 
     def _prepare_data_type(self, data):
         if not data.get("@type"):

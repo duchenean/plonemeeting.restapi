@@ -2,6 +2,8 @@
 
 from plonemeeting.restapi.tests.base import BaseTestCase
 from Products.PloneMeeting.tests.PloneMeetingTestCase import DEFAULT_USER_PASSWORD
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
 
 import transaction
 
@@ -12,7 +14,8 @@ class testServicePMUsersGet(BaseTestCase):
     def setUp(self):
         super(testServicePMUsersGet, self).setUp()
         # restrict self.meetingConfig access to developers
-        self.meetingConfig.setUsingGroups([self.developers_uid])
+        self.meetingConfig.using_groups = [self.developers_uid]
+        notify(ObjectModifiedEvent(self.meetingConfig))
         transaction.commit()
 
     def tearDown(self):
