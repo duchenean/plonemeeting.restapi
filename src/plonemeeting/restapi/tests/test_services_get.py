@@ -367,13 +367,13 @@ class testServiceGetUid(BaseTestCase):
         """Test the extra_include=linked_items."""
         cfg = self.meetingConfig
         self._removeConfigObjectsFor(cfg)
-        cfg.setItemManualSentToOtherMCStates(('itemcreated', ))
+        cfg.item_manual_sent_to_other_mc_states = ('itemcreated', )
         cfg2 = self.meetingConfig2
         cfg2Id = cfg2.getId()
         # make sure items sendable to cfg2
-        cfg.setMeetingConfigsToCloneTo(
-            ({'meeting_config': cfg2Id,
-              'trigger_workflow_transitions_until': NO_TRIGGER_WF_TRANSITION_UNTIL}, ))
+        cfg.meeting_configs_to_clone_to = (
+            {'meeting_config': cfg2Id,
+             'trigger_workflow_transitions_until': NO_TRIGGER_WF_TRANSITION_UNTIL}, )
         # setup, create item, delay it, send it to cfg2
         # auto linked items
         self.changeUser('pmManager')

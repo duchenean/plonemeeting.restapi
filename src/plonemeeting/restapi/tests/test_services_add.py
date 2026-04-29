@@ -103,8 +103,8 @@ class testServiceAdd(BaseTestCase):
     def test_restapi_add_item_optional_fields(self):
         """When creating an item, given optional fields must be enabled in config."""
         cfg = self.meetingConfig
-        self.assertFalse("category" in cfg.getUsedItemAttributes())
-        self.assertFalse("notes" in cfg.getUsedItemAttributes())
+        self.assertFalse("category" in cfg.used_item_attributes)
+        self.assertFalse("notes" in cfg.used_item_attributes)
         self.changeUser("pmManager")
         endpoint_url = "{0}/@item".format(self.portal_url)
         json = {
@@ -146,8 +146,8 @@ class testServiceAdd(BaseTestCase):
            but when using parameter "ignore_not_used_data=true" then a warning
            is added instead raising an error."""
         cfg = self.meetingConfig
-        self.assertFalse("notes" in cfg.getUsedItemAttributes())
-        self.assertFalse("category" in cfg.getUsedItemAttributes())
+        self.assertFalse("notes" in cfg.used_item_attributes)
+        self.assertFalse("category" in cfg.used_item_attributes)
         self.changeUser("pmManager")
         endpoint_url = "{0}/@item".format(self.portal_url)
         json = {
@@ -173,7 +173,7 @@ class testServiceAdd(BaseTestCase):
         """When creating an item, values for fields storing organization
            uids may receive organizations ids instead to ease use by externals."""
         cfg = self.meetingConfig
-        cfg.setOrderedGroupsInCharge([self.vendors_uid])
+        cfg.ordered_groups_in_charge = [self.vendors_uid]
         self._enableField("groupsInCharge")
         self._enableField("associatedGroups")
         self.changeUser("pmManager")
@@ -213,7 +213,7 @@ class testServiceAdd(BaseTestCase):
         """Can not use an external org UID in relevant fields, excepted for the
            associatedGroups field (tested in test_restapi_add_item_org_fields)."""
         cfg = self.meetingConfig
-        cfg.setOrderedGroupsInCharge([self.vendors_uid])
+        cfg.ordered_groups_in_charge = [self.vendors_uid]
         self._enableField("groupsInCharge")
         self._enableField("associatedGroups")
         self.changeUser("pmManager")
