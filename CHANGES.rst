@@ -1,11 +1,12 @@
 Changelog
 =========
 
-Version 1.x is for PloneMeeting 4.1.x, version 2.x is for PloneMeeting 4.2.x+
+Version 1.x is for PloneMeeting 4.1.x, version 2.x is for PloneMeeting 4.2.x,
+version 3.x is for PloneMeeting 6.x.
 
 
-2.14 (unreleased)
------------------
+3.0.0 (unreleased)
+------------------
 
 - Convert MeetingConfig AT field accessor / mutator calls to DX
   direct attribute access (B.1.5 of the iA.Delib P6 migration). 11
